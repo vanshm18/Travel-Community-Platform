@@ -6,7 +6,7 @@ const Featured = () => {
   const [listings, setListings] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/listings")
+    fetch("https://travel-community-platform-backend.onrender.com/listings")
       .then((res) => res.json())
       .then((data) => {
         setListings(data);

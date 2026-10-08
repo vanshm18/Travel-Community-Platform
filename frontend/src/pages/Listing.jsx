@@ -10,7 +10,7 @@ const Listing = () => {
   console.log(id);
 
   useEffect(() => {
-  fetch(`http://localhost:8080/listings/${id}`)
+  fetch(`https://travel-community-platform-backend.onrender.com/listings/${id}`)
     .then((res) => res.json())
     .then((data) => {
       setListing(data);
