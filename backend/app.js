@@ -1,21 +1,20 @@
 const express = require("express");
 const app = express();
 
-const port = 8080;
+const PORT = process.env.PORT || 8080;
 
 const cors = require("cors");
-app.use(cors());
-
-const mongoose = require("mongoose");
-const Listing = require("./schemas/listingSchema");
-const connectDB = require("./database/db");
 const dotenv = require("dotenv");
 
 dotenv.config();
 
-connectDB();
-
+app.use(cors());
 app.use(express.json());
+
+const Listing = require("./schemas/listingSchema");
+const connectDB = require("./database/db");
+
+connectDB();
 
 app.get("/", (req, res) => {
   res.send("Server is running");
@@ -31,6 +30,6 @@ app.get("/listings/:id", async (req, res) => {
   res.json(listing);
 });
 
-app.listen(port, (req,res) => {
-    console.log(`App is listening on port ${port}`);
+app.listen(PORT, () => {
+    console.log(`App is listening on port ${PORT}`);
 })
